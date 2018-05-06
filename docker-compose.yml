@@ -90,8 +90,8 @@ services:
 
   service-layer:
     image: caeldock/service-layer-node
-    container_name: service-layer-node
     working_dir: /block-chain-explorer
+    tty: true
 
 volumes:
   cassdata1:
