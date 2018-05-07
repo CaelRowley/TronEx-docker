@@ -1,0 +1,9 @@
+version: '2'
+services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.2.4
+    # volumes:
+    #   - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+    #   - ./graphs:/usr/share/kibana/config/graphs.json
+    environment:
+      - "ELASTICSEARCH_URL=http://localhost"
