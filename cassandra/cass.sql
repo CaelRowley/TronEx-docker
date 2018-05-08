@@ -64,6 +64,16 @@ CREATE TABLE IF NOT EXISTS witness (
 CREATE TABLE IF NOT EXISTS nodes (
     host text,
     port text,
+    city text,
+    region text,
+    latitude double,
+    longitude double,
+    continentcode text,
+    countryname text,
+    country text,
+    regioncode text,
+    currency text,
+    org text,
     PRIMARY KEY (host)
 );
 
@@ -81,6 +91,8 @@ CREATE TABLE IF NOT EXISTS assetissues (
     url text,
     PRIMARY KEY (ownerAddress)
 );
+
+-- INSERT INTO nodes (host, port, city, org, latitude, longitude, continentcode, countryname, country, regioncode, currency, org) VALUES (host, port, currency, org, latitude, longitude, countinentalcode, countryname, country, regioncode, region, city);
 
 -- INSERT INTO accounts (accountname, type, address, balance, voteslist, assetmap, latestoprationtime) VALUES ('', 0, 'oA+/5jvnOQN7lB5btt3L+5PMa+wf', 1000000000000, {'asd' : {voteaddress : 'oFQwo/CJFU6eGC3db+E2piMhryKn' , votecount: 200000} , 'asd' : {voteaddress : 'oFQwo/CJFU6eGC3db+E2piMhryKn' , votecount: 200000}}, {'TRX': 27 , 'Super Tron': 100} , 0);
 

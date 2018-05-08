@@ -4,14 +4,15 @@ docker-compose -f docker-compose.yml up -d
 
 sleep 60
 
-#sudo docker cp ./cassandra/cass.sql tronexdocker_cassandra-1_1:./cass.sql
+#docker cp ./cassandra/cass.sql tronex-docker_cassandra-1_1:./cass.sql
 
-docker exec tronexdocker_cassandra-1_1 ./cass.sh
+docker exec tronex-docker_cassandra-1_1 ./cass.sh
 echo "SETUP DB TABLES ON CASSANDRA CLUSTER"
 
+# Service application layer config #
 elasticsearch_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' elasticsearch)
-cass_1_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' tronexdocker_cassandra-1_1)
-tron_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' tronexdocker_tron-node_1)
+cass_1_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' tronex-docker_cassandra-1_1)
+tron_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' tronex-docker_tron-node_1)
 
 sed -i -e "s/elasticsearch_ip=\"*.*.*.*\"/elasticsearch_ip=\"$elasticsearch_ip\"/g" ./service-layer/update-ips.sh
 sed -i -e "s/cass_1_ip=\"*.*.*.*\"/cass_1_ip=\"$cass_1_ip\"/g" ./service-layer/update-ips.sh
