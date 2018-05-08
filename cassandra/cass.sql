@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS block (
     witnessAddress text,
     transactionsCount int,
     transactions map<text, frozen<transaction>>,
+    size bigint,
     PRIMARY KEY (number)
 );
 
