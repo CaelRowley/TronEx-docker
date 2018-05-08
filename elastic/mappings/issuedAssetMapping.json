@@ -1,0 +1,14 @@
+{
+  "issuedasset":{
+    "properties":{
+      "startTime":{
+        "type":"date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "endTime":{
+        "type":"date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      }
+    }
+  }
+}
