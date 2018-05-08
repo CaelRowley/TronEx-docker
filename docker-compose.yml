@@ -66,6 +66,7 @@ services:
     working_dir: /scripts
     volumes:
       - ./elastic/elastic.sh:/scripts/elastic.sh
+      - ./elastic/mappings/:/scripts/mappings/
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200

@@ -9,6 +9,8 @@ sudo docker cp ./cassandra/cass.sql docker_cassandra-1_1:./cass.sql
 sudo docker exec tronex-docker_cassandra-1_1 ./cass.sh
 echo "SETUP DB TABLES ON CASSANDRA CLUSTER"
 
+# sudo docker exec -it elasticsearch ./mappings/addMappings.sh
+
 elasticsearch_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' elasticsearch)
 cass_1_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' tronex-docker_cassandra-1_1)
 tron_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' tronex-docker_tron-node_1)
