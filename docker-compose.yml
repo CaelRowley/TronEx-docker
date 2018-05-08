@@ -65,11 +65,20 @@ services:
         hard: -1
     working_dir: /scripts
     volumes:
-      - ./elastic/elastic.sh:/scripts/elastic.sh
       - ./elastic/mappings/:/scripts/mappings/
+      # - ./elastic/elastic.sh:/scripts/elastic.sh
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+    networks:
+      - esnet
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.2.4
+    ports:
+      - 5601:5601
+    environment:
+      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
     networks:
       - esnet
 
