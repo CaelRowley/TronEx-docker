@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS accounts (
     balance bigint,
     voteslist map<text, frozen<voteslist>>,
     assetmap map<text, bigint>,
-    latestoprationtime int,
+    latestoprationtime bigint,
     PRIMARY KEY (address)
 );
 
