@@ -26,6 +26,11 @@ CREATE TYPE IF NOT EXISTS voteslist (
     votecount bigint,
 );
 
+CREATE TYPE IF NOT EXISTS frozenlist (
+    frozenBalance bigint,
+    expireTime bigint,
+);
+
 CREATE TABLE IF NOT EXISTS accounts (
     accountname text,
     type int,
@@ -33,8 +38,8 @@ CREATE TABLE IF NOT EXISTS accounts (
     balance bigint,
     voteslist map<text, frozen<voteslist>>,
     assetmap map<text, bigint>,
-    latestoprationtime int,
-    frozenlist map<text, bigint>,
+    latestoprationtime bigint,
+    frozenlist map<text, frozen<frozenlist>>,
     bandwidth bigint,
     createtime bigint,
     allowance bigint,
@@ -100,7 +105,7 @@ CREATE TABLE IF NOT EXISTS assetissues (
 
 -- INSERT INTO nodes (host, port, city, org, latitude, longitude, continentcode, countryname, country, regioncode, currency, org) VALUES (host, port, currency, org, latitude, longitude, countinentalcode, countryname, country, regioncode, region, city);
 
--- INSERT INTO accounts (accountname, type, address, balance, voteslist, assetmap, latestoprationtime) VALUES ('', 0, 'oA+/5jvnOQN7lB5btt3L+5PMa+wf', 1000000000000, {'asd' : {voteaddress : 'oFQwo/CJFU6eGC3db+E2piMhryKn' , votecount: 200000} , 'asd' : {voteaddress : 'oFQwo/CJFU6eGC3db+E2piMhryKn' , votecount: 200000}}, {'TRX': 27 , 'Super Tron': 100} , 0);
+-- INSERT INTO accounts (accountname, type, address, balance, voteslist, assetmap, latestoprationtime, frozenlist, bandwidth, createtime, allowance, latestwithdrawtime, code) VALUES ('', 0, '27cR9nG28vFbES1wqmCLGymYxCmawqFHXck', 402789000000, {}, {}, 1525874976000, {'0': {frozenBalance: 0, expireTime: 2}}, 0, 1525867938000, 0, 0, '');
 
 -- INSERT INTO assetissues (ownerAddress, name, totalSupply, trxNum, num, startTime, endTime, decayRatio, voteScore, description, url) VALUES ('oEeI3RNeKFjDe0jFJXI9Zgt6YydY', 'VFJY', 10000, 1000000000, 0, 0, 0, 0, 0, 'VHJvbml4', 'aHR0cHM6Ly90d2l0dGVyLmNvbS9Ba29zY2kx');
 
