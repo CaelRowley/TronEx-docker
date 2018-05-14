@@ -34,6 +34,12 @@ CREATE TABLE IF NOT EXISTS accounts (
     voteslist map<text, frozen<voteslist>>,
     assetmap map<text, bigint>,
     latestoprationtime int,
+    frozenlist map<text, bigint>,
+    bandwidth bigint,
+    createtime bigint,
+    allowance bigint,
+    latestwithdrawtime bigint,
+    code text,
     PRIMARY KEY (address)
 );
 
@@ -102,6 +108,3 @@ CREATE TABLE IF NOT EXISTS assetissues (
 
 -- INSERT INTO block (parentHash, number, time, contracttype, witnessAddress, transactionsCount, transactions) VALUES ('0000000000000004FC3D510BC1661E4E5905A4C197B07FEC05DC8D4784F0A898', 2, 0, { 'contracttypes': { accountcreatecontract: 0, transfercontract: 1, transferassetcontract: 2, voteassetcontract: 3,votewitnesscontract: 4,witnesscreatecontract: 5, assetissuecontract: 6, deploycontract: 7, witnessupdatecontract: 8, participateassetissuecontract: 9 } }, '27YkUVSuvCK3K84DbnFnxYUxozpi793PTqZ', 3, {'asd' :{ fromAddress: 'val1',
 -- toAddress: 'val0', amount: 100 }, 'asdwqe' :{ fromAddress: 'val2', toAddress: 'val3', amount: 100 }});
-
-
-
