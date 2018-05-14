@@ -9,7 +9,7 @@ sleep 60
 docker exec tronex-docker_cassandra-1_1 ./cass.sh
 echo "SETUP DB TABLES ON CASSANDRA CLUSTER"
 
-# sudo docker exec -it elasticsearch ./mappings/addMappings.sh
+docker exec elasticsearch bash ./mappings/addMappings.sh
 
 # Service application layer config #
 elasticsearch_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' elasticsearch)
@@ -21,4 +21,4 @@ sed -i -e "s/cass_1_ip=\"*.*.*.*\"/cass_1_ip=\"$cass_1_ip\"/g" ./service-layer/u
 sed -i -e "s/tron_ip=\"*.*.*.*\"/tron_ip=\"$tron_ip\"/g" ./service-layer/update-ips.sh
 
 docker cp service-layer/update-ips.sh tronex-docker_service-layer_1:/block-chain-explorer/update-ips.sh
-sudo docker exec tronex-docker_service-layer_1 /bin/sh -c "./update-ips.sh"
+docker exec tronex-docker_service-layer_1 /bin/sh -c "./update-ips.sh"

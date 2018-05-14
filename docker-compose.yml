@@ -10,6 +10,17 @@ services:
     #-Pwitness
     command: ./gradlew run
 
+  # tron-node-2:
+  #   image: caeldock/tron-node
+  #   hostname: tron-node
+  #   expose:
+  #     - 18888
+  #     - 50051
+  #   tty: true
+  #   command: ./gradlew run -P witness
+  #   links:
+  #     - tron-node
+
 
   cassandra-1:
     hostname: cassandra-1
@@ -66,7 +77,6 @@ services:
     working_dir: /scripts
     volumes:
       - ./elastic/mappings/:/scripts/mappings/
-      # - ./elastic/elastic.sh:/scripts/elastic.sh
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200

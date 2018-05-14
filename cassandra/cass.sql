@@ -19,6 +19,11 @@ CREATE TYPE IF NOT EXISTS contracttype (
     deploycontract int,
     witnessupdatecontract int,
     participateassetissuecontract int,
+    accountupdatecontract int,
+    freezebalancecontract int,
+    unfreezebalancecontract int,
+    withdrawbalancecontract int,
+    customcontract int,
 );
 
 CREATE TYPE IF NOT EXISTS voteslist (
@@ -50,12 +55,13 @@ CREATE TABLE IF NOT EXISTS accounts (
 
 CREATE TABLE IF NOT EXISTS block (
     parentHash text,
-    number int,
+    number bigint,
     time bigint,
     contracttype map<text, frozen<contracttype>>,
     witnessAddress text,
     transactionsCount int,
     transactions map<text, frozen<transaction>>,
+    size bigint,
     PRIMARY KEY (number)
 );
 
@@ -111,5 +117,6 @@ CREATE TABLE IF NOT EXISTS assetissues (
 
 -- INSERT INTO witness (address, votecount, pubkey, url, totalmissed, latestblocknum, latestslotnum, isjobs) VALUES ('oJKLwolvslTgX8KfI2M41RMJKt9u', 0, '', 'https://www.cryptobitkings.com/', 0, 0, 0, false);
 
--- INSERT INTO block (parentHash, number, time, contracttype, witnessAddress, transactionsCount, transactions) VALUES ('0000000000000004FC3D510BC1661E4E5905A4C197B07FEC05DC8D4784F0A898', 2, 0, { 'contracttypes': { accountcreatecontract: 0, transfercontract: 1, transferassetcontract: 2, voteassetcontract: 3,votewitnesscontract: 4,witnesscreatecontract: 5, assetissuecontract: 6, deploycontract: 7, witnessupdatecontract: 8, participateassetissuecontract: 9 } }, '27YkUVSuvCK3K84DbnFnxYUxozpi793PTqZ', 3, {'asd' :{ fromAddress: 'val1',
--- toAddress: 'val0', amount: 100 }, 'asdwqe' :{ fromAddress: 'val2', toAddress: 'val3', amount: 100 }});
+
+-- INSERT INTO block (parentHash, number, time, contracttype, witnessAddress, transactionsCount, transactions, size) VALUES ('0000000000000004FC3D510BC1661E4E5905A4C197B07FEC05DC8D4784F0A898', 2, 0, { 'asd': { accountcreate: 0, transfer: 1, transferasset: 2, voteasset: 3,votewitness: 4,witnesscreate: 5, assetissue: 6, deploy: 7, witnessupdate: 8, participateassetissue: 9, accountupdate:10, freezebalance: 11, unfreezebalance:12, withdrawbalance:13, custom:20 } }, '27YkUVSuvCK3K84DbnFnxYUxozpi793PTqZ', 3, {'asd' :{ fromAddress: 'val1',
+-- toAddress: 'val0', amount: 100 }, 'asdwqe' :{ fromAddress: 'val2', toAddress: 'val3', amount: 100 }}, 1000);
