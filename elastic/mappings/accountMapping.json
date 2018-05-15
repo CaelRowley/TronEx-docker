@@ -1,0 +1,18 @@
+{
+  "account":{
+    "properties":{
+      "latestOprationTime":{
+        "type":"date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "createTime":{
+        "type":"date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "latestWithdrawTime":{
+        "type":"date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      }
+    }
+  }
+}

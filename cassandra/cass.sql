@@ -37,6 +37,7 @@ CREATE TYPE IF NOT EXISTS frozenlist (
 );
 
 CREATE TABLE IF NOT EXISTS accounts (
+    uuid uuid,
     accountname text,
     type int,
     address text,
@@ -50,10 +51,11 @@ CREATE TABLE IF NOT EXISTS accounts (
     allowance bigint,
     latestwithdrawtime bigint,
     code text,
-    PRIMARY KEY (address)
+    PRIMARY KEY (uuid)
 );
 
 CREATE TABLE IF NOT EXISTS block (
+    uuid uuid,
     parentHash text,
     number bigint,
     time bigint,
@@ -62,7 +64,7 @@ CREATE TABLE IF NOT EXISTS block (
     transactionsCount int,
     transactions map<text, frozen<transaction>>,
     size bigint,
-    PRIMARY KEY (number)
+    PRIMARY KEY (uuid)
 );
 
 CREATE TABLE IF NOT EXISTS witness (
