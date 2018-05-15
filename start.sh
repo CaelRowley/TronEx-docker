@@ -9,7 +9,7 @@ sleep 60
 docker exec tronex-docker_cassandra-1_1 ./cass.sh
 echo "SETUP DB TABLES ON CASSANDRA CLUSTER"
 
-docker exec elasticsearch bash ./mappings/addMappings.sh
+docker exec elasticsearch bash -c 'cd ./mappings/; ./addMappings.sh'
 
 # Service application layer config #
 elasticsearch_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' elasticsearch)
