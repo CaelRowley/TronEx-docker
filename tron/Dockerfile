@@ -6,7 +6,7 @@ RUN set -o errexit -o nounset \
     && git clone https://github.com/tronprotocol/java-tron.git \
     && cd java-tron \
     && git checkout master \
-    && gradle build
+    && ./gradlew clean shadowJar
 
 # Change work directory
 WORKDIR /java-tron

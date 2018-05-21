@@ -26,6 +26,16 @@ CREATE TYPE IF NOT EXISTS contracttype (
     customcontract int,
 );
 
+CREATE TABLE IF NOT EXISTS transactions (
+    uuid uuid,
+    blocknum bigint,
+    transactionnum bigint,
+    fromaddress text,
+    toaddress text,
+    amount bigint,
+    PRIMARY KEY (uuid, blocknum, transactionnum)
+);
+
 CREATE TYPE IF NOT EXISTS voteslist (
     voteaddress text,
     votecount bigint,
@@ -51,11 +61,12 @@ CREATE TABLE IF NOT EXISTS accounts (
     allowance bigint,
     latestwithdrawtime bigint,
     code text,
-    PRIMARY KEY (uuid)
+    PRIMARY KEY (uuid, address)
 );
 
 CREATE TABLE IF NOT EXISTS block (
     uuid uuid,
+    hash text,
     parentHash text,
     number bigint,
     time bigint,
@@ -64,7 +75,8 @@ CREATE TABLE IF NOT EXISTS block (
     transactionsCount int,
     transactions map<text, frozen<transaction>>,
     size bigint,
-    PRIMARY KEY (uuid)
+    transactionsTotal bigint,
+    PRIMARY KEY (uuid, number)
 );
 
 CREATE TABLE IF NOT EXISTS witness (
