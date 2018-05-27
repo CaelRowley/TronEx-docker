@@ -22,3 +22,6 @@ sed -i -e "s/tron_ip=\"*.*.*.*\"/tron_ip=\"$tron_ip\"/g" ./service-layer/update-
 
 docker cp service-layer/update-ips.sh tronex-docker_service-layer_1:/block-chain-explorer/update-ips.sh
 docker exec tronex-docker_service-layer_1 /bin/sh -c "./update-ips.sh"
+
+docker exec tronex-docker_service-layer_1 node index.js
+echo "STARTING SERVICE LAYER"
